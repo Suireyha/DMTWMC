@@ -18,7 +18,20 @@ public class Main extends JFrame {
       @Override
       public void paint(Graphics g) {
 	g.setColor(java.awt.Color.BLACK);
-	g.drawRect(10, 10, 700, 700);
+  int topr = 10;
+  int topl = 10;
+  int size = 35;
+  for (int i = 0; i < 20; i++){
+    for (int j = 0; j < 20; j++){
+      g.drawRect(topr, topl, size, size);
+      topl += 35;
+    }
+    topl = 10;
+    topr += 35;
+  }
+ 
+	
+
       }
     }
 
