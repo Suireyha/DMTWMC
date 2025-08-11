@@ -17,18 +17,11 @@ public class Main extends JFrame {
 
       @Override
       public void paint(Graphics g) {
-	g.setColor(java.awt.Color.BLACK);
-  int x = 10;
-  int y = 10;
-  int size = 35;
-  for (int i = 0; i < 20; i++){
-    for (int j = 0; j < 20; j++){
-      g.drawRect(x, y, size, size);
-      y += 35;
-    }
-    y = 10;
-    x += 35;
-  }
+        System.out.println("Test 1");
+        Grid a = new Grid();
+        a.paintGrid(g);
+        System.out.println("Test 2");
+
  
 	
 
