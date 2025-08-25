@@ -19,7 +19,6 @@ public class Main extends JFrame {
       @Override
       public void paint(Graphics g) {
         stage.paint(g, getMousePosition());
-        System.out.println(stage.grid.cellAtPoint(getMousePosition()));
       }
     }
 

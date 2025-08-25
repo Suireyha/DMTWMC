@@ -19,9 +19,12 @@ public class Grid {
         cells[i][j].paint(g, mousePos);
       }
     }
-    Cell cellFound = cellAtPoint(mousePos).get();
-    String cellPos = cellFound.x + ", " + cellFound.y;
-    g.drawString(cellPos, 750, 360);
+    Optional<Cell> cellFound = cellAtPoint(mousePos);
+    String message = "Not in a cell";
+    if(cellFound.isPresent()){
+      message = "Column: " + ((cellFound.get().x-10)/35) + " Row: " + ((cellFound.get().y-10)/35);
+    }
+    g.drawString(message, 750, 360);
   }
 
   public Cell cellAtColRow(int c, int r) {
@@ -33,8 +36,8 @@ public class Grid {
     if(p != null){
       if(p.getX() >= 10 && p.getX() <= 710){
         if(p.getY() >= 10 && p.getY() <= 710){
-          int cellX = (int)(p.getX() / 35);
-          int cellY = (int)(p.getY() / 35);
+          int cellX = (int)((p.getX()-10) / 35);
+          int cellY = (int)((p.getY()-10) / 35);
           location = Optional.of(cellAtColRow(cellX, cellY));
         }
       }
