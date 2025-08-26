@@ -6,13 +6,17 @@ public class Cell extends java.awt.Rectangle {
   // fields
   int x;
   int y;
+  int row;
+  int col;
   static int size = 35;
 
   // constructors
-  public Cell(int inX, int inY) {
+  public Cell(int inX, int inY, int r, int c) {
     super(inX, inY, size, size);
     x = inX;
     y = inY;
+    this.row = r;
+    this.col = c;
   }
 
   // methods
@@ -36,4 +40,10 @@ public class Cell extends java.awt.Rectangle {
       return false;
     }
   }
+
+  @Override
+  public String toString(){
+    return row + "," + col;
+  }
+
 }

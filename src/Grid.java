@@ -1,5 +1,6 @@
 import java.awt.Graphics;
 import java.awt.Point;
+import java.util.Optional;
 
 public class Grid {
   // fields
@@ -9,7 +10,7 @@ public class Grid {
   public Grid() {
     for(int i=0; i<cells.length; i++) {
       for(int j=0; j<cells[i].length; j++) {
-        cells[i][j] = new Cell(10+Cell.size*i, 10+Cell.size*j);
+        cells[i][j] = new Cell(10+Cell.size*i, 10+Cell.size*j, i, j);
       }
     }
   }
@@ -21,4 +22,19 @@ public class Grid {
       }
     }
   }
+
+  public Optional<Cell> cellAtPoint(Point p){
+    Optional<Cell> location = Optional.empty();
+    for(Cell[] cellRow: cells){
+      for(Cell cell: cellRow){
+        if(cell.contains(p)){
+          location = Optional.of(cell);
+          return location; 
+        }
+      }
+    }
+
+    return location;
+  }
+
 }
