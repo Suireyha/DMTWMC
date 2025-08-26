@@ -35,7 +35,7 @@ public class Cell extends java.awt.Rectangle {
 
   public boolean contains(Point p) {
     if(p != null) {
-      return x < p.x && x+size > p.x && y < p.y && y+size > p.y;
+      return super.contains(p);
     } else {
       return false;
     }
