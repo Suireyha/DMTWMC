@@ -28,7 +28,7 @@ public class Stage {
         
 
         if(mousePos != null){
-            g.drawString("Current Cell: " + GridA.toString(), 720, 200);
+            g.drawString("Current Cell: " + GridA.cellAtPoint(mousePos).map(Cell::toString).orElse("none"), 720, 200);
         }else{
             g.drawString("Out of bounds idiot", 720, 200);
         }

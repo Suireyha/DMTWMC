@@ -23,6 +23,10 @@ public class Grid {
     }
   }
 
+  public Cell cellAtColRow(int c, int r) {
+    return cells[c][r];
+  }
+
   public Optional<Cell> cellAtPoint(Point p){
     Optional<Cell> location = Optional.empty();
     for(Cell[] cellRow: cells){

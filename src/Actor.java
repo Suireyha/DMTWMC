@@ -1,14 +1,27 @@
-import java.awt.Graphics;
-import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.util.List;
+import java.awt.Polygon;
+import java.util.ArrayList;
 
 public class Actor {
-    public Actor(){}
+  List<Polygon> shape = new ArrayList<>();
+  Color colour;
+  Cell location;
 
-    public void paint(Graphics g, Color colour, Cell cell){
+
+    public Actor(Color c, Cell l){
+        this.colour = c;
+        this.location = l;
+    }   
+
+    public void paint(Graphics g, Color colour, Cell cell) {
         g.setColor(colour);
-        g.fillOval(cell.x, cell.y, 10, 10);
-        g.drawOval(cell.x, cell.y, 10, 10);
+        
+        for(Polygon features: shape){
+        g.drawPolygon(features);
+        }
+   
     }
+
 }
