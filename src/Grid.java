@@ -1,9 +1,16 @@
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.Optional;
-
+/*!!IMPORTANT NOTE FROM MARVIN:
+* Wherever we handle mouse position to meet some end, we need to remove the offset I've made
+* Take a look at the second variable in the class gridOffset- that's how the offset is calculated.
+* If we change the window size, pixel size, or number of pixels we need to change that variable here and
+* in Stage.java.
+* To remove the offset so we can get the actual mousePos, take a look at what's happening in paint();
+*/
 public class Grid {
   Cell[][] cells = new Cell[20][20];
+  double gridOffset = (900/2) - (35*20)/2; //Currently the window is Window = 900px, Cells = 35px, #OfCells = 20;
   
   public Grid() {
     for(int i=0; i<cells.length; i++) {
@@ -14,6 +21,9 @@ public class Grid {
   }
 
   public void paint(Graphics g, Point mousePos) {
+    Point offsetMousePos = new Point(mousePos); //This is the ACTUAL mouse position obtained by removing the offset.
+    offsetMousePos.x -= gridOffset;
+    offsetMousePos.y -= gridOffset;
     for(int i=0; i<cells.length; i++) {
       for(int j=0; j<cells[i].length; j++) {
         cells[i][j].paint(g, mousePos);
@@ -24,7 +34,7 @@ public class Grid {
     if(cellFound.isPresent()){
       message = "Column: " + ((cellFound.get().x-10)/35) + " Row: " + ((cellFound.get().y-10)/35);
     }
-    g.drawString(message, 750, 360);
+    g.drawString(message, 310, 1);
   }
 
   public Cell cellAtColRow(int c, int r) {
@@ -32,12 +42,15 @@ public class Grid {
   }
 
   public Optional<Cell> cellAtPoint(Point p){
+    Point offsetP = new Point(p); //This is the ACTUAL mouse position obtained by removing the offset.
+    offsetP.x -= gridOffset;
+    offsetP.y -= gridOffset;
     Optional<Cell> location = Optional.empty();
-    if(p != null){
-      if(p.getX() >= 10 && p.getX() <= 710){
-        if(p.getY() >= 10 && p.getY() <= 710){
-          int cellX = (int)((p.getX()-10) / 35);
-          int cellY = (int)((p.getY()-10) / 35);
+    if(offsetP != null){
+      if(offsetP.getX() >= 10 && offsetP.getX() <= 710){
+        if(offsetP.getY() >= 10 && offsetP.getY() <= 710){
+          int cellX = (int)((offsetP.getX()-10) / 35);
+          int cellY = (int)((offsetP.getY()-10) / 35);
           location = Optional.of(cellAtColRow(cellX, cellY));
         }
       }
