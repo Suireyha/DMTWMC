@@ -4,16 +4,22 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+
 public class Main extends JFrame {
+  int winWidth = 900;
+  int winHeight = 900;
     public static void main(String[] args) throws Exception {
       Main window = new Main();
+      window.setBounds(350, 100, 900, 900); //Window is being drawn at x=350 y=100, dimensions are 900^2
       window.run();
     }
 
     class Canvas extends JPanel {
       Stage stage = new Stage();
+      
       public Canvas() {
-        setPreferredSize(new Dimension(1024, 720));
+        setPreferredSize(new Dimension(winWidth, winHeight));
+
       }
 
       @Override

@@ -1,8 +1,4 @@
-import java.awt.Color;
-import java.awt.Graphics;
-import java.util.List;
 import java.awt.Polygon;
-import java.util.ArrayList;
 
 public class Dog extends Actor {
   public Dog(Cell inLoc) {
