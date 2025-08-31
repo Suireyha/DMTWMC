@@ -1,6 +1,9 @@
 import java.awt.Graphics;
+import java.awt.Graphics2D; //Adding this so I can change how the text looks
+import java.awt.BasicStroke; //Stroke for the text
 import java.awt.Point;
 import java.util.Optional;
+import java.awt.Color;
 /*!!IMPORTANT NOTE FROM MARVIN:
 * Wherever we handle mouse position to meet some end, we need to remove the offset I've made
 * Take a look at the second variable in the class gridOffset- that's how the offset is calculated.
@@ -11,7 +14,8 @@ import java.util.Optional;
 public class Grid {
   Cell[][] cells = new Cell[20][20];
   double gridOffset = (900/2) - (35*20)/2; //Currently the window is Window = 900px, Cells = 35px, #OfCells = 20;
-  
+  Color lime = new Color(0, 255, 50);
+
   public Grid() {
     for(int i=0; i<cells.length; i++) {
       for(int j=0; j<cells[i].length; j++) {
@@ -34,7 +38,11 @@ public class Grid {
     if(cellFound.isPresent()){
       message = "Column: " + ((cellFound.get().x-10)/35) + " Row: " + ((cellFound.get().y-10)/35);
     }
-    g.drawString(message, 310, 1);
+
+    Graphics2D g2d = (Graphics2D) g;
+    g2d.setColor(lime);
+    g2d.setStroke(new BasicStroke(2f)); //Doesn't work </3
+    g2d.drawString(message, 310, 1);
   }
 
   public Cell cellAtColRow(int c, int r) {
