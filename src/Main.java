@@ -6,8 +6,9 @@ import javax.swing.JPanel;
 
 
 public class Main extends JFrame {
-  int winWidth = 900;
-  int winHeight = 900;
+  //Global variables for dynamic calculations in other files
+  public int winWidth = 900;
+  public int winHeight = 900;
     public static void main(String[] args) throws Exception {
       Main window = new Main();
       window.setBounds(350, 100, 900, 900); //Window is being drawn at x=350 y=100, dimensions are 900^2
