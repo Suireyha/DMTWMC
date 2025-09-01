@@ -25,6 +25,9 @@ public class Grid {
   }
 
   public void paint(Graphics g, Point mousePos) {
+    // If mousepos is null, make it = -1000, 1000 so we don't get null pointer exceptions. FOR WEEK 6 WE CAN TOTALLY MAKE THIS A TRY{}CATCH{} INSTEAD!!!
+    mousePos = (mousePos != null) ? mousePos : new Point(100, 100);
+
     Point offsetMousePos = new Point(mousePos); //This is the ACTUAL mouse position obtained by removing the offset.
     offsetMousePos.x -= gridOffset;
     offsetMousePos.y -= gridOffset;
