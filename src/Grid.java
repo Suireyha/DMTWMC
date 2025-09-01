@@ -4,6 +4,8 @@ import java.awt.BasicStroke; //Stroke for the text
 import java.awt.Point;
 import java.util.Optional;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.font.*;
 /*!!IMPORTANT NOTE FROM MARVIN:
 * Wherever we handle mouse position to meet some end, we need to remove the offset I've made
 * Take a look at the second variable in the class gridOffset- that's how the offset is calculated.
@@ -45,6 +47,7 @@ public class Grid {
     Graphics2D g2d = (Graphics2D) g;
     g2d.setColor(lime);
     g2d.setStroke(new BasicStroke(2f)); //Doesn't work </3
+    g2d.setFont(new Font("Arial", Font.BOLD, 17)); //Changes the font to Arial, bold, 15px
     g2d.drawString(message, 310, 1);
   }
 
