@@ -51,7 +51,16 @@ public class Stage {
 
     }
     catch(NullPointerException e){
-        System.out.println("Failed :(");
+        System.out.println("Failed: File is empty");
+        actors.add(new Cat(grid.cellAtColRow(0, 0).get()));
+        actors.add(new Dog(grid.cellAtColRow(0, 15).get()));
+        actors.add(new Bird(grid.cellAtColRow(12, 9).get())); 
+    }
+    catch(NumberFormatException e){
+        System.out.println("Failed: No numbers for row");
+        actors.add(new Cat(grid.cellAtColRow(0, 0).get()));
+        actors.add(new Dog(grid.cellAtColRow(0, 15).get()));
+        actors.add(new Bird(grid.cellAtColRow(12, 9).get())); 
     }
   }
 
