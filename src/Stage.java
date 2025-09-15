@@ -26,7 +26,7 @@ public class Stage {
     choosingActorState = new ChoosingActor(this);
     selectingNewLocationState = new SelectingNewLocation(this);
     botMovingState = new BotMoving(this);
-    currentState = ChoosingActorState;
+    currentState = choosingActorState;
     beat = new AnimationBeat();
   }
 
@@ -104,4 +104,5 @@ public class Stage {
   public void mouseClicked(int x, int y) {
     currentState.mouseClicked(x, y);
   }
+
 }
