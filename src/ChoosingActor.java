@@ -15,7 +15,7 @@ public class ChoosingActor implements State {
           if(player.loc.contains(x, y) && !player.isBot()) {
             stage.cellOverlay = stage.grid.getRadius(player.loc, player.moves);
             stage.playerInAction = Optional.of(player);
-            stage.currentState = State.selectingNewLocationState;
+            stage.currentState = stage.selectingNewLocationState;
             }
         }
     }

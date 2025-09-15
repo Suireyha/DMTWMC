@@ -11,7 +11,7 @@ public class SelectingNewLocation implements State {
 
     public void paint(){}
 
-    public SelectingNewLocation(Stage stage, int x, int y) {
+    public void mouseClicked(int x, int y) {
         Optional<Cell> clicked = Optional.empty();
         for(Cell c: stage.cellOverlay) {
           if(c.contains(x, y)) {
