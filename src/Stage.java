@@ -8,11 +8,13 @@ import java.util.Random;
 
 public class Stage {
   Grid grid;
-  private List<Actor> listOfPlayers;
+  List<Actor> listOfPlayers;
   List<Cell> cellOverlay;
   Optional<Actor> playerInAction;
 
-  enum State {ChoosingActor, SelectingNewLocation, BotMoving}
+  State choosingActorState;
+  State selectingNewLocationState;
+  State botMovingState;
   State currentState;
   Beat beat;
 
@@ -21,10 +23,16 @@ public class Stage {
     listOfPlayers = new ArrayList<Actor>();
     cellOverlay = new ArrayList<Cell>();
     playerInAction = Optional.empty();
-    currentState = State.ChoosingActor;
+    choosingActorState = new ChoosingActor(this);
+    selectingNewLocationState = new SelectingNewLocation(this);
+    botMovingState = new BotMoving(this);
+    currentState = ChoosingActorState;
     beat = new AnimationBeat();
   }
 
+  public void setState(State state){
+    currentState = state;
+  }
   public void addPlayer(Actor player) {
     listOfPlayers.add(player);
     if(player.isBot()) {
@@ -34,6 +42,7 @@ public class Stage {
 
   public void paint(Graphics g, Point mouseLoc) {
     // do we have bot moves to make?
+
     if(currentState == State.BotMoving) {
       for(Actor player: listOfPlayers) {
         if(player.isBot()) {

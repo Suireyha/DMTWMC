@@ -1,3 +1,3 @@
-public class State {
+public interface State {
     
 }
