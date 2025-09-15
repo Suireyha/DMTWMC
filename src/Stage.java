@@ -104,4 +104,5 @@ public class Stage {
   public void mouseClicked(int x, int y) {
     currentState.mouseClicked(x, y);
   }
+
 }
